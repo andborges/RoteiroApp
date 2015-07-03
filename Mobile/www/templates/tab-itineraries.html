@@ -1,0 +1,12 @@
+<ion-view view-title="Roteiros">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-avatar item-icon-right" ng-repeat="itinerary in itineraries" type="item-text-wrap" href="#/tab/itineraries/{{itinerary.id}}">
+        <img ng-src="{{itinerary.face}}">
+        <h2>{{itinerary.name}}</h2>
+        <p>{{itinerary.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
