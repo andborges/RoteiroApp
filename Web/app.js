@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var routesV1 = require('./routes/api/v1/index');
 
 var app = express();
 
@@ -21,7 +22,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://@127.0.0.1:27017/roteiro', function(err) {
+    if(err) {
+        console.log('connection error', err);
+    } else {
+        console.log('connection successful');
+    }
+});
+
 app.use('/', routes);
+app.use('/api/v1', routesV1);
 
 app.get('/partials/:name', function (req, res) {
   var name = req.params.name;
