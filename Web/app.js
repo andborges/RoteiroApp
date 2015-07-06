@@ -5,9 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var routesV1 = require('./routes/api/v1/index');
-
 var app = express();
 
 // view engine setup
@@ -31,7 +28,7 @@ mongoose.connect('mongodb://@127.0.0.1:27017/roteiro', function(err) {
     }
 });
 
-// app.use('/', routes);
+var routesV1 = require('./routes/api/v1/index');
 app.use('/api/v1', routesV1);
 
 app.get('/partials/:name', function (req, res) {

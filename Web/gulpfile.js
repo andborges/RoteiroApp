@@ -1,12 +1,7 @@
 var gulp = require('gulp'),
-    install = require("gulp-install"),
     child_process = require('child_process'),
     nodemon = require('gulp-nodemon'),
     open = require('gulp-open');
-
-gulp.task('install', function() {
-  gulp.src(['./bower.json', './package.json']).pipe(install());
-});
 
 gulp.task('mongo', function() {
   gulp.src('').pipe(gulp.dest('data/mongodb'));
