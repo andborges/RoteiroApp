@@ -1,7 +1,6 @@
-span Pesquisa:
-input(type='text', ng-model='search.name')
-button(ng-click='executeSearch()') Ok
-br
-
-ul
-  li(ng-repeat="location in locations") {{location.name}}
+form(ng-submit="executeSearch()")
+  .input-group
+    input.form-control(type="text", ng-model="search.text", placeholder="Pesquisar")
+    span.input-group-btn
+      button.btn.btn-default(type="submit")
+        span.glyphicon.glyphicon-search

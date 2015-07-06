@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Roteiro' });
 });
 
+router.get('/search/:text', function(req, res, next) {
+  res.render('index', { title: 'Roteiro' });
+});
+
 module.exports = router;

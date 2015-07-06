@@ -2,3 +2,21 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
+
+ul#locations {
+  margin-top: 10px;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul#locations .title h2 {
+  margin: 0px;
+}
+
+ul#locations .itineraries {
+  margin-top: 10px;
+}
