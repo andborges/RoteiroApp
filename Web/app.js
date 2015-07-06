@@ -31,12 +31,16 @@ mongoose.connect('mongodb://@127.0.0.1:27017/roteiro', function(err) {
     }
 });
 
-app.use('/', routes);
+// app.use('/', routes);
 app.use('/api/v1', routesV1);
 
 app.get('/partials/:name', function (req, res) {
   var name = req.params.name;
   res.render('partials/' + name);
+});
+
+app.get('*', function(req, res, next) {
+  res.render('index', { title: 'Roteiro' });
 });
 
 // catch 404 and forward to error handler
