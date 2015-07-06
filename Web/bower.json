@@ -2,11 +2,11 @@
     "name": "RoteiroWeb",
     "version": "1.0.0",
     "dependencies": {
-        "bootstrap": "latest",
-        "font-awesome": "latest",
-        "animate.css": "latest",
-        "angular": "latest",
-        "angular-route": "latest",
-        "angular-resource": "latest"
+        "bootstrap": "3.3.5",
+        "font-awesome": "4.3.0",
+        "animate.css": "3.3.0",
+        "angular": "1.4.1",
+        "angular-route": "1.4.1",
+        "angular-resource": "1.4.1"
     }
 }
