@@ -13,10 +13,10 @@ ul {
   list-style-type: none;
 }
 
-ul#locations .title h2 {
+.title h2 {
   margin: 0px;
 }
 
-ul#locations .itineraries {
+.itineraries {
   margin-top: 10px;
 }

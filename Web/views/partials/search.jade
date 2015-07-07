@@ -1,3 +1,8 @@
+ol.breadcrumb
+  li
+    a(href="/") Home
+  li.active Pesquisa
+
 form(ng-submit="executeSearch()")
   .input-group
     input.form-control(type="text", ng-model="search.text", placeholder="Pesquisar")
@@ -10,14 +15,10 @@ ul#locations
     .panel.panel-default
       .panel-body
         .row
-          .photo.col-md-3
-            img.img-responsive(src="images/location/{{location._id}}_1.jpg")
-          .col-md-9
+          .photo.col-md-2
+            img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
+          .col-md-10
             .title
-              h2 {{ location.name }}, {{ location. country }}
-            .description {{ location.description }}
-
-            .itineraries Roteiros:
-              ul
-                li(ng-repeat="it in location.itineraries")
-                  a(href="javascript: void(0)", ng-click="getItinerary(it._id)") {{ it.name }}
+              h2
+                a(href="location/{{ location._id }}") {{ location.name }}, {{ location. country }}
+            .description {{ location.description.substring(0, 400) }}...

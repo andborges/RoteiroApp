@@ -24,5 +24,5 @@ gulp.task('initdata', function() {
 gulp.task('default', function() {
   nodemon({ script: './bin/www' });
 
-  gulp.src('./routes/index.js').pipe(open('', { url: 'http://localhost:3000' }));
+  gulp.src('./app.js').pipe(open('', { url: 'http://localhost:3000' }));
 });

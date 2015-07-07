@@ -20,12 +20,20 @@ angular.module('roteiroApp.controllers', [])
   $scope.executeSearch = function() {
     $location.url("/search/" + $scope.search.text);
   }
+})
 
-  $scope.getItinerary = function(id) {
-    var url = "/api/v1/itinerary/" + id;
+.controller('LocationCtrl', function($scope, $routeParams, $resource) {
+  var url = "/api/v1/location/" + $routeParams.id;
 
-    $resource(url).get(function(itinerary) {
-      $scope.itinerary = itinerary;
-    });
-  };
+  $resource(url).get(function(location) {
+    $scope.location = location;
+  });
+})
+
+.controller('ItineraryCtrl', function($scope, $routeParams, $resource) {
+  var url = "/api/v1/itinerary/" + $routeParams.id;
+
+  $resource(url).get(function(location) {
+    $scope.location = location;
+  });
 });
