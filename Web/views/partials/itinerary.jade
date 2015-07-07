@@ -1,0 +1,45 @@
+ol.breadcrumb
+  li
+    a(href="/") Home
+  li
+    a(href="/location/{{ location._id }}") {{ location.name }}
+  li.active Roteiro: {{ location.itineraries[0].name }}
+
+.panel.panel-default
+  .panel-body
+    .row
+      .photo.col-md-3
+        img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
+      .col-md-9
+        .title
+          h2 {{ location.name }}, {{ location. country }}
+        .description {{ location.description }}
+
+    .row
+      .col-md-12
+        .itineraries
+          h3 Roteiro: {{ location.itineraries[0].name }}
+          .row
+            .col-md-3(ng-repeat="day in location.itineraries[0].days")
+                div
+                  h4 Dia {{ day.number }}
+
+                .list-group
+                  .list-group-item.active Manhã
+                  .list-group-item(ng-repeat="place in day.morning") {{ place.name }}
+
+                .list-group
+                  .list-group-item.active Almoço
+                  .list-group-item {{ day.lunch.name }}
+
+                .list-group
+                  .list-group-item.active Tarde
+                  .list-group-item(ng-repeat="place in day.afternoon") {{ place.name }}
+
+                .list-group
+                  .list-group-item.active Jantar
+                  .list-group-item {{ day.dinner.name }}
+
+                .list-group
+                  .list-group-item.active Noite
+                  .list-group-item(ng-repeat="place in day.night") {{ place.name }}
