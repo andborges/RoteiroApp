@@ -69,15 +69,17 @@ var locationCollection = [
 ];
 
 var placeCollection = [
-  { _id: "amantikir", location_id: "camposjordao", name: "Amantikir", description: "", price: 10.00, latitude: -45.607922, longitude: -22.783164 },
-  { _id: "baden", location_id: "camposjordao", name: "Cervejaria Baden Baden", description: "", price: 25.50, latitude: -45.6202769, longitude: -22.748019 },
+  { _id: "amantikir", location_id: "camposjordao", name: "Amantikir", description: "", price: 10.00, loc: [-22.7833172, -45.6079034] },
+  { _id: "baden", location_id: "camposjordao", name: "Cervejaria Baden Baden", description: "", price: 25.50, loc: [-22.748019, -45.6202769] },
 
-  { _id: "moneda", location_id: "santiago", name: "Palácio de la Moneda", description: "" , price: 0.00, latitude: -70.6538699, longitude: -33.4429091 },
-  { _id: "plazaarmas", location_id: "santiago", name: "Plaza de Armas", description: "" , price: 0.00, latitude: -70.6504649, longitude: -33.4378594 },
-  { _id: "ajiseco", location_id: "santiago", name: "El Ají Seco", description: "" , price: 0.00, latitude: -70.648602, longitude: -33.4367128 },
-  { _id: "casonaajiseco", location_id: "santiago", name: "La Casona del Ají Seco", description: "" , price: 0.00, latitude: -70.616931, longitude: -33.434163 },
-  { _id: "patiobelavista", location_id: "santiago", name: "Pátio Bela Vista", description: "" , price: 0.00, latitude: -70.616931, longitude: -33.434163 }
+  { _id: "moneda", location_id: "santiago", name: "Palácio de la Moneda", description: "" , price: 0.00, loc: [-33.4429091, -70.6538699] },
+  { _id: "plazaarmas", location_id: "santiago", name: "Plaza de Armas", description: "" , price: 0.00, loc: [-33.4378594, -70.6504649] },
+  { _id: "ajiseco", location_id: "santiago", name: "El Ají Seco", description: "" , price: 0.00, loc: [-33.4367128, -70.648602] },
+  { _id: "casonaajiseco", location_id: "santiago", name: "La Casona del Ají Seco", description: "" , price: 0.00, loc: [-33.434163, -70.616931] },
+  { _id: "patiobelavista", location_id: "santiago", name: "Pátio Bela Vista", description: "" , price: 0.00, loc: [-33.434163, -70.616931] }
 ];
 
 db.locations.save(locationCollection);
 db.places.save(placeCollection);
+
+db.places.createIndex({ loc : "2dsphere" });
