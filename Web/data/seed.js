@@ -17,7 +17,7 @@ var locationCollection = [
         days: [
           {
             number: 1,
-            morning: ["amantikir", "baden"], afternoon: ["amantikir", "baden"], night: [],
+            morning: ["baden", "baden"], afternoon: ["amantikir", "baden"], night: [],
             lunch: null, dinner: null
           },
           {
@@ -54,13 +54,12 @@ var locationCollection = [
         days: [
           {
             number: 1,
-            morning: ["moneda", "plazaarmas"], afternoon: ["plazaarmas", "moneda"], night: ["patiobelavista"],
+            morning: ["moneda", "plazaarmas", "plazaarmas"], afternoon: ["moneda", "moneda"],
             lunch: "ajiseco", dinner: "casonaajiseco"
           },
           {
             number: 2,
-            morning: ["plazaarmas", "moneda"], afternoon: ["moneda", "plazaarmas"], night: ["patiobelavista"],
-            lunch: "casonaajiseco", dinner: "ajiseco"
+            morning: ["vina"], afternoon: ["vina"], lunch: "vina", dinner: "ajiseco"
           }
         ]
       }
@@ -69,14 +68,15 @@ var locationCollection = [
 ];
 
 var placeCollection = [
-  { _id: "amantikir", location_id: "camposjordao", name: "Amantikir", description: "", price: 10.00, loc: [-22.7833172, -45.6079034] },
-  { _id: "baden", location_id: "camposjordao", name: "Cervejaria Baden Baden", description: "", price: 25.50, loc: [-22.748019, -45.6202769] },
+  { _id: "amantikir", location_id: "camposjordao", name: "Amantikir", description: "", price: 10.00, loc: [-22.7833172, -45.6079034], duration: 90 },
+  { _id: "baden", location_id: "camposjordao", name: "Cervejaria Baden Baden", description: "", price: 25.50, loc: [-22.748019, -45.6202769], duration: 120 },
 
-  { _id: "moneda", location_id: "santiago", name: "Palácio de la Moneda", description: "" , price: 0.00, loc: [-33.4429091, -70.6538699] },
-  { _id: "plazaarmas", location_id: "santiago", name: "Plaza de Armas", description: "" , price: 0.00, loc: [-33.4378594, -70.6504649] },
+  { _id: "moneda", location_id: "santiago", name: "Palácio de la Moneda", description: "" , price: 0.00, loc: [-33.4429091, -70.6538699], duration: 120 },
+  { _id: "plazaarmas", location_id: "santiago", name: "Plaza de Armas", description: "" , price: 0.00, loc: [-33.4378594, -70.6504649], duration: 60 },
   { _id: "ajiseco", location_id: "santiago", name: "El Ají Seco", description: "" , price: 0.00, loc: [-33.4367128, -70.648602] },
   { _id: "casonaajiseco", location_id: "santiago", name: "La Casona del Ají Seco", description: "" , price: 0.00, loc: [-33.434163, -70.616931] },
-  { _id: "patiobelavista", location_id: "santiago", name: "Pátio Bela Vista", description: "" , price: 0.00, loc: [-33.434163, -70.616931] }
+  { _id: "patiobelavista", location_id: "santiago", name: "Pátio Bela Vista", description: "" , price: 0.00, loc: [-33.434163, -70.616931] },
+  { _id: "vina", location_id: "santiago", name: "Viña del Mar e Valparaíso", description: "" , price: 0.00, loc: [-33.434163, -70.616931], duration: 240 }
 ];
 
 db.locations.save(locationCollection);

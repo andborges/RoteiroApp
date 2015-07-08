@@ -24,22 +24,34 @@ ol.breadcrumb
                 div
                   h4 Dia {{ day.number }}
 
-                .list-group
+                .list-group(ng-show="day.morning.length > 0")
                   .list-group-item.active Manhã
-                  .list-group-item(ng-repeat="place in day.morning") {{ place.name }}
+                  .list-group-item(ng-repeat="place in day.morning")
+                    .row
+                      .col-md-9(style="height: {{ (place.duration * 0.4) + (((place.duration / 60) - 1) * 10) + ((place.duration / 60) - 1) }}px") {{ place.name }}
+                      .col-md-3
+                        span.badge(ng-if="place.duration && place.duration > 0") {{ place.duration / 60 + "h" }}
 
-                .list-group
+                .list-group(ng-show="day.lunch.name")
                   .list-group-item.active Almoço
                   .list-group-item {{ day.lunch.name }}
 
-                .list-group
+                .list-group(ng-show="day.afternoon.length > 0")
                   .list-group-item.active Tarde
-                  .list-group-item(ng-repeat="place in day.afternoon") {{ place.name }}
+                  .list-group-item(ng-repeat="place in day.afternoon")
+                    .row
+                      .col-md-9(style="height: {{ (place.duration * 0.4) + (((place.duration / 60) - 1) * 10) + ((place.duration / 60) - 1) }}px") {{ place.name }}
+                      .col-md-3
+                        span.badge(ng-if="place.duration && place.duration > 0") {{ place.duration / 60 + "h" }}
 
-                .list-group
+                .list-group(ng-show="day.dinner.name")
                   .list-group-item.active Jantar
                   .list-group-item {{ day.dinner.name }}
 
-                .list-group
+                .list-group(ng-show="day.night.length > 0")
                   .list-group-item.active Noite
-                  .list-group-item(ng-repeat="place in day.night") {{ place.name }}
+                  .list-group-item(ng-repeat="place in day.night")
+                    .row
+                      .col-md-9(style="height: {{ (place.duration * 0.4) + (((place.duration / 60) - 1) * 10) + ((place.duration / 60) - 1) }}px") {{ place.name }}
+                      .col-md-3
+                        span.badge(ng-if="place.duration && place.duration > 0") {{ place.duration / 60 + "h" }}

@@ -4,7 +4,9 @@ var PlaceSchema = new mongoose.Schema ({
   _id: String,
   location_id: String,
   name: String,
-  description: String
+  description: String,
+  loc: { type: [Number], index: '2dsphere' },
+  duration: Number
 });
 
 var ItinerarySchema = new mongoose.Schema ({
