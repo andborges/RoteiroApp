@@ -15,7 +15,7 @@ var locationCollection = [
         _id: "camposjordao1",
         name: "Três dias em Campos do Jordão",
         mapCenter: [-22.7833172, -45.6079034],
-        mapZoom: 3,
+        mapZoom: 15,
         days: [
           {
             number: 1,
@@ -80,7 +80,7 @@ var placeCollection = [
   { _id: "ajiseco", location_id: "santiago", name: "El Ají Seco", description: "" , price: 0.00, loc: [-33.4367128, -70.648602] },
   { _id: "casonaajiseco", location_id: "santiago", name: "La Casona del Ají Seco", description: "" , price: 0.00, loc: [-33.434163, -70.616931] },
   { _id: "patiobelavista", location_id: "santiago", name: "Pátio Bela Vista", description: "" , price: 0.00, loc: [-33.434163, -70.616931] },
-  { _id: "vina", location_id: "santiago", name: "Viña del Mar e Valparaíso", description: "" , price: 0.00, loc: [-33.434163, -70.616931], duration: 240 }
+  { _id: "vina", location_id: "santiago", name: "Viña del Mar e Valparaíso", description: "" , price: 0.00, loc: [-33.0055289, -71.5301544], duration: 240 }
 ];
 
 db.locations.save(locationCollection);
