@@ -14,6 +14,8 @@ var locationCollection = [
       {
         _id: "camposjordao1",
         name: "Três dias em Campos do Jordão",
+        mapCenter: [-22.7833172, -45.6079034],
+        mapZoom: 3,
         days: [
           {
             number: 1,
@@ -51,6 +53,8 @@ var locationCollection = [
       {
         _id: "santiago1",
         name: "Dois dias em Santiago",
+        mapCenter: [-33.4429091, -70.6538699],
+        mapZoom: 12,
         days: [
           {
             number: 1,

@@ -55,3 +55,6 @@ ol.breadcrumb
                       .col-md-9(style="height: {{ (place.duration * 0.4) + (((place.duration / 60) - 1) * 10) + ((place.duration / 60) - 1) }}px") {{ place.name }}
                       .col-md-3
                         span.badge(ng-if="place.duration && place.duration > 0") {{ place.duration / 60 + "h" }}
+
+    map(center="{{ location.itineraries[0].mapCenter[0] }}, {{ location.itineraries[0].mapCenter[1] }}", zoom="{{ location.itineraries[0].mapZoom }}")
+      marker(ng-repeat="marker in markers" position="{{ marker.loc[0] }}, {{ marker.loc[1] }}", title="{{ marker.name }}")

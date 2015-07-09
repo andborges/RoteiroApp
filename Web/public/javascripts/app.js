@@ -1,4 +1,4 @@
-angular.module('roteiroApp', ['ngRoute', 'ngResource', 'roteiroApp.controllers']).
+angular.module('roteiroApp', ['ngRoute', 'ngResource', 'ngMap', 'roteiroApp.controllers']).
 
 config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider.

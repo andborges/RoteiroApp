@@ -12,6 +12,8 @@ var PlaceSchema = new mongoose.Schema ({
 var ItinerarySchema = new mongoose.Schema ({
   _id: String,
   name: String,
+  mapCenter: [Number],
+  mapZoom: Number,
   days: [{
     number: Number,
     morning: [{ type: String, ref: 'Place' }],
