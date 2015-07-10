@@ -57,4 +57,4 @@ ol.breadcrumb
                         span.badge(ng-if="place.duration && place.duration > 0") {{ place.duration / 60 + "h" }}
 
     ui-gmap-google-map(center="map.center", zoom="map.zoom")
-      ui-gmap-markers(models="map.markers", coords="'self'", icon="'icon'", fit="true")
+      ui-gmap-markers(models="map.markers", coords="'self'", icon="'icon'", options="'options'", fit="true")

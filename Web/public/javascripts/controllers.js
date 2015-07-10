@@ -35,6 +35,7 @@ angular.module('roteiroApp.controllers', [])
 
   $resource(url).get(function(location) {
     $scope.location = location;
+
     $scope.map = {
       center: {
                 latitude: location.itineraries[0].mapCenter[0],
@@ -43,19 +44,36 @@ angular.module('roteiroApp.controllers', [])
       zoom: location.itineraries[0].mapZoom
     };
 
-    var markers = [];
-    for (var i = 0; i < location.itineraries[0].days.length; i++) {
-      for (var j = 0; j < location.itineraries[0].days[i].morning.length; j++) {
+    var createMarkers = function(type, places) {
+      var markers = [];
+
+      for (var i = 0; i < places.length; i++) {
         var marker = {
-          id: "morning" + markers.length,
-          latitude: location.itineraries[0].days[i].morning[j].loc[0],
-          longitude: location.itineraries[0].days[i].morning[j].loc[1],
-          title: location.itineraries[0].days[i].morning[j].name,
-          icon: "images/markers/" + (i + 1) + "_MarkerP.png"
+          id: type + "_" + markers.length,
+          latitude: places[i].loc[0],
+          longitude: places[i].loc[1],
+          icon: "images/markers/" + (i + 1) + "_MarkerP.png",
+          options: {
+            labelContent: places[i].name,
+            labelAnchor: "0 55",
+            labelClass: "marker-labels"
+          }
         };
 
         markers.push(marker);
       }
+
+      return markers;
+    };
+
+    var markers = [];
+
+    for (var i = 0; i < location.itineraries[0].days.length; i++) {
+      markers = markers.concat(createMarkers("morning_" + i, location.itineraries[0].days[i].morning));
+      markers = markers.concat(createMarkers("afternoon_" + i, location.itineraries[0].days[i].afternoon));
+      markers = markers.concat(createMarkers("night_" + i, location.itineraries[0].days[i].night));
+      markers = markers.concat(createMarkers("lunch", [location.itineraries[0].days[i].lunch]));
+      markers = markers.concat(createMarkers("dinner", [location.itineraries[0].days[i].dinner]));
     };
 
     $scope.map.markers = markers;
