@@ -49,7 +49,7 @@ angular.module('roteiroApp.controllers', [])
 
       for (var i = 0; i < places.length; i++) {
         var marker = {
-          id: type + "_" + markers.length,
+          id: type + "_" + i,
           latitude: places[i].loc[0],
           longitude: places[i].loc[1],
           icon: "images/markers/" + (i + 1) + "_MarkerP.png",
@@ -72,8 +72,8 @@ angular.module('roteiroApp.controllers', [])
       markers = markers.concat(createMarkers("morning_" + i, location.itineraries[0].days[i].morning));
       markers = markers.concat(createMarkers("afternoon_" + i, location.itineraries[0].days[i].afternoon));
       markers = markers.concat(createMarkers("night_" + i, location.itineraries[0].days[i].night));
-      markers = markers.concat(createMarkers("lunch", [location.itineraries[0].days[i].lunch]));
-      markers = markers.concat(createMarkers("dinner", [location.itineraries[0].days[i].dinner]));
+      markers = markers.concat(createMarkers("lunch" + i, [location.itineraries[0].days[i].lunch]));
+      markers = markers.concat(createMarkers("dinner" + i, [location.itineraries[0].days[i].dinner]));
     };
 
     $scope.map.markers = markers;
