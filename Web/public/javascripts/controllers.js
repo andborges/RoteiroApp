@@ -50,7 +50,8 @@ angular.module('roteiroApp.controllers', [])
           id: "morning" + markers.length,
           latitude: location.itineraries[0].days[i].morning[j].loc[0],
           longitude: location.itineraries[0].days[i].morning[j].loc[1],
-          title: location.itineraries[0].days[i].morning[j].name
+          title: location.itineraries[0].days[i].morning[j].name,
+          icon: "images/markers/" + (i + 1) + "_MarkerP.png"
         };
 
         markers.push(marker);
