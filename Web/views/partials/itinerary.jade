@@ -56,7 +56,5 @@ ol.breadcrumb
                       .col-md-3
                         span.badge(ng-if="place.duration && place.duration > 0") {{ place.duration / 60 + "h" }}
 
-    map(center="{{ location.itineraries[0].mapCenter[0] }}, {{ location.itineraries[0].mapCenter[1] }}", zoom="{{ location.itineraries[0].mapZoom }}")
-      marker(ng-repeat="marker in markers", id="m{{ $index }}", position="{{ marker.loc[0] }}, {{ marker.loc[1] }}", title="{{ marker.name }}", on-click="showInfoWindow(event, 'i{{ $index }}')")
-      info-window(ng-repeat="marker in markers", id="i{{ $index }}", visible-on-marker="m{{ $index }}")
-        div {{ marker.name }}
+    ui-gmap-google-map(center="map.center", zoom="map.zoom")
+      ui-gmap-markers(models="map.markers", coords="'self'", icon="'icon'")

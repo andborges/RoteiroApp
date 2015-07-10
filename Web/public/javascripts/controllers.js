@@ -35,17 +35,28 @@ angular.module('roteiroApp.controllers', [])
 
   $resource(url).get(function(location) {
     $scope.location = location;
+    $scope.map = {
+      center: {
+                latitude: location.itineraries[0].mapCenter[0],
+                longitude: location.itineraries[0].mapCenter[1]
+              },
+      zoom: location.itineraries[0].mapZoom
+    };
 
     var markers = [];
     for (var i = 0; i < location.itineraries[0].days.length; i++) {
       for (var j = 0; j < location.itineraries[0].days[i].morning.length; j++) {
-        markers.push(location.itineraries[0].days[i].morning[j]);
+        var marker = {
+          id: "morning" + markers.length,
+          latitude: location.itineraries[0].days[i].morning[j].loc[0],
+          longitude: location.itineraries[0].days[i].morning[j].loc[1],
+          title: location.itineraries[0].days[i].morning[j].name
+        };
+
+        markers.push(marker);
       }
-      
-      markers.push(location.itineraries[0].days[i].lunch);
-      markers.push(location.itineraries[0].days[i].dinner);
     };
 
-    $scope.markers = markers;
+    $scope.map.markers = markers;
   });
 });

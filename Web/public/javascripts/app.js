@@ -1,6 +1,6 @@
-angular.module('roteiroApp', ['ngRoute', 'ngResource', 'ngMap', 'roteiroApp.controllers']).
+angular.module('roteiroApp', ['ngRoute', 'ngResource', 'uiGmapgoogle-maps', 'roteiroApp.controllers']).
 
-config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+config(['$routeProvider', '$locationProvider', 'uiGmapGoogleMapApiProvider', function($routeProvider, $locationProvider, GoogleMapApi) {
   $routeProvider.
     when('/', {
       templateUrl: 'partials/index',
@@ -23,4 +23,10 @@ config(['$routeProvider', '$locationProvider', function($routeProvider, $locatio
     });
 
   $locationProvider.html5Mode(true);
+
+  GoogleMapApi.configure({
+    // key: 'your api key',
+    v: '3.17',
+    libraries: 'weather,geometry,visualization'
+  });
 }]);

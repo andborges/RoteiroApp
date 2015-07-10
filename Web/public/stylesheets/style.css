@@ -24,3 +24,5 @@ ul {
 .itineraries .list-group-item {
   padding: 5px;
 }
+
+.angular-google-map-container { height: 400px; }
