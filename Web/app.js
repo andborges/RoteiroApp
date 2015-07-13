@@ -32,8 +32,11 @@ var routesV1 = require('./routes/api/v1/index');
 app.use('/api/v1', routesV1);
 
 app.get('/partials/:name', function (req, res) {
-  var name = req.params.name;
-  res.render('partials/' + name);
+  res.render('partials/' + req.params.name);
+});
+
+app.get('/partials/admin/:area/:name', function (req, res) {
+  res.render('partials/admin/' + req.params.area + "/" + req.params.name);
 });
 
 app.get('*', function(req, res, next) {

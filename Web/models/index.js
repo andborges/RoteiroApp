@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var PlaceSchema = new mongoose.Schema ({
-  _id: String,
-  location_id: String,
+  _id: { type: mongoose.Schema.ObjectId, default: function () { return new mongoose.Types.ObjectId()} },
+  location_id: mongoose.Schema.ObjectId,
   name: String,
   description: String,
   loc: { type: [Number], index: '2dsphere' },
@@ -10,22 +10,24 @@ var PlaceSchema = new mongoose.Schema ({
 });
 
 var ItinerarySchema = new mongoose.Schema ({
-  _id: String,
+  _id: { type: mongoose.Schema.ObjectId, default: function () { return new mongoose.Types.ObjectId()} },
+  code: String,
   name: String,
   mapCenter: [Number],
   mapZoom: Number,
   days: [{
     number: Number,
-    morning: [{ type: String, ref: 'Place' }],
-    afternoon: [{ type: String, ref: 'Place' }],
-    night: [{ type: String, ref: 'Place' }],
-    lunch: { type: String, ref: 'Place' },
-    dinner: { type: String, ref: 'Place' }
+    morning: [{ type: mongoose.Schema.ObjectId, ref: 'Place' }],
+    afternoon: [{ type: mongoose.Schema.ObjectId, ref: 'Place' }],
+    night: [{ type: mongoose.Schema.ObjectId, ref: 'Place' }],
+    lunch: { type: mongoose.Schema.ObjectId, ref: 'Place' },
+    dinner: { type: mongoose.Schema.ObjectId, ref: 'Place' }
   }]
 });
 
 var LocationSchema = new mongoose.Schema ({
-  _id: String,
+  _id: { type: mongoose.Schema.ObjectId, default: function () { return new mongoose.Types.ObjectId()} },
+  code: String,
   name: String,
   state: String,
   country: String,

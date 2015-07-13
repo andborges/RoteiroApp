@@ -10,14 +10,28 @@ config(['$routeProvider', '$locationProvider', 'uiGmapGoogleMapApiProvider', fun
       templateUrl: 'partials/search',
       controller: 'SearchCtrl'
     }).
-    when('/location/:id', {
+    when('/location/:code', {
       templateUrl: 'partials/location',
       controller: 'LocationCtrl'
     }).
-    when('/itinerary/:id', {
+    when('/itinerary/:code', {
       templateUrl: 'partials/itinerary',
       controller: 'ItineraryCtrl'
     }).
+
+    when('/admin/location', {
+      templateUrl: 'partials/admin/location/list',
+      controller: 'AdminLocationListCtrl'
+    }).
+    when('/admin/location/create', {
+      templateUrl: 'partials/admin/location/create',
+      controller: 'AdminLocationCreateCtrl'
+    }).
+    when('/admin/location/edit/:id', {
+      templateUrl: 'partials/admin/location/edit',
+      controller: 'AdminLocationEditCtrl'
+    }).
+
     otherwise({
       redirectTo: '/'
     });

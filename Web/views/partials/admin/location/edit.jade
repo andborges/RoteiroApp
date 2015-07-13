@@ -1,0 +1,43 @@
+include ../../menu.jade
+
+section.container.pages
+  ol.breadcrumb
+    li
+      a(href="/") Home
+    li
+      a(href="/admin") Admin
+    li
+      a(href="/admin/location") Localidades
+    li.active Alterar "{{ location.name }}"
+
+  form(name="locationForm", ng-submit="save()")
+    div.form-group(ng-class="{ 'has-error': locationForm.code.$dirty && locationForm.code.$invalid }")
+      label(for="code") Código
+      input.form-control(type="text", name="code", placeholder="Código", ng-model="location.code", required)
+
+    div.form-group(ng-class="{ 'has-error': locationForm.name.$dirty && locationForm.name.$invalid }")
+      label(for="name") Nome
+      input.form-control(type="text", name="name", placeholder="Nome", ng-model="location.name", required)
+
+      div(ng-show="locationForm.$submitted || locationForm.name.$touched")
+        span(ng-show="locationForm.name.$error.required") O nome é obrigatório
+
+    div.form-group(ng-class="{ 'has-error': locationForm.state.$dirty && locationForm.state.$invalid }")
+      label(for="name") Estado
+      input.form-control(type="text", name="state", placeholder="Estado", ng-model="location.state")
+
+    div.form-group(ng-class="{ 'has-error': locationForm.country.$dirty && locationForm.country.$invalid }")
+      label(for="name") País
+      input.form-control(type="text", name="country", placeholder="País", ng-model="location.country", required)
+
+      div(ng-show="locationForm.$submitted || locationForm.country.$touched")
+        span(ng-show="locationForm.country.$error.required") O país é obrigatório
+
+    div.form-group(ng-class="{ 'has-error': locationForm.description.$dirty && locationForm.description.$invalid }")
+      label(for="name") Descrição
+      textarea.form-control(name="description", rows="10", placeholder="Description", ng-model="location.description", required)
+
+      div(ng-show="locationForm.$submitted || locationForm.description.$touched")
+        span(ng-show="locationForm.description.$error.required") A descrição é obrigatória
+
+    button.btn.btn-default(type="submit", ng-disabled="locationForm.$invalid") Salvar

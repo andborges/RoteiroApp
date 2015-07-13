@@ -1,0 +1,26 @@
+include ../../menu.jade
+
+section.container.pages
+  ol.breadcrumb
+    li
+      a(href="/") Home
+    li
+      a(href="/admin") Admin
+    li.active Localidades
+
+  a(href="/admin/location/create") Cadastrar nova Localidade
+
+  table.table
+    thead
+      tr
+        th Código
+        th Nome
+        th País
+        th Ações
+    tbody
+      tr(ng-repeat="location in locations")
+        td {{ location.code }}
+        td {{ location.name }}
+        td {{ location.country }}
+        td
+          a(href="/admin/location/edit/{{ location._id }}") Alterar

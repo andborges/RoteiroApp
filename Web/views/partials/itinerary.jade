@@ -5,14 +5,14 @@ section.container.pages
     li
       a(href="/") Home
     li
-      a(href="/location/{{ location._id }}") {{ location.name }}
+      a(href="/location/{{ location.code }}") {{ location.name }}
     li.active Roteiro: {{ location.itineraries[0].name }}
 
   .panel.panel-default
     .panel-body
       .row
         .photo.col-md-3
-          img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
+          img.img-responsive(src="images/location/{{ location.code }}_1.jpg")
         .col-md-9
           .title
             h2 {{ location.name }}, {{ location. country }}

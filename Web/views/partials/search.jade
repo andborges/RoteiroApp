@@ -19,9 +19,9 @@ section.container.pages
         .panel-body
           .row
             .photo.col-md-2
-              img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
+              img.img-responsive(src="images/location/{{ location.code }}_1.jpg")
             .col-md-10
               .title
                 h2
-                  a(href="location/{{ location._id }}") {{ location.name }}, {{ location. country }}
+                  a(href="location/{{ location.code }}") {{ location.name }}, {{ location.country }}
               .description {{ location.description.substring(0, 400) }}...

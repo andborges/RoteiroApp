@@ -7,7 +7,6 @@ angular.module('roteiroApp.controllers', [])
     $location.url("/search/" + $scope.search.text);
   }
 })
-
 .controller('SearchCtrl', function($scope, $location, $routeParams, $resource) {
   $scope.search = { text: $routeParams.text };
 
@@ -21,17 +20,15 @@ angular.module('roteiroApp.controllers', [])
     $location.url("/search/" + $scope.search.text);
   }
 })
-
 .controller('LocationCtrl', function($scope, $routeParams, $resource) {
-  var url = "/api/v1/location/" + $routeParams.id;
+  var url = "/api/v1/location/code/" + $routeParams.code;
 
   $resource(url).get(function(location) {
     $scope.location = location;
   });
 })
-
 .controller('ItineraryCtrl', function($scope, $routeParams, $resource) {
-  var url = "/api/v1/itinerary/" + $routeParams.id;
+  var url = "/api/v1/itinerary/code/" + $routeParams.code;
 
   $resource(url).get(function(location) {
     $scope.location = location;
@@ -78,4 +75,34 @@ angular.module('roteiroApp.controllers', [])
 
     $scope.map.markers = markers;
   });
+})
+
+.controller('AdminLocationListCtrl', function($scope, $routeParams, $resource) {
+  var url = "/api/v1/location";
+
+  $resource(url).query(function(locations) {
+    $scope.locations = locations;
+  });
+})
+.controller('AdminLocationCreateCtrl', function($scope, $location, $resource) {
+  $scope.save = function() {
+    var url = "/api/v1/location";
+
+    $resource(url).save($scope.location, function() {
+      $location.url("/admin/location");
+    });
+  }
+})
+.controller('AdminLocationEditCtrl', function($scope, $location, $routeParams, $resource) {
+  var url = "/api/v1/location/" + $routeParams.id;
+
+  $resource(url).get(function(location) {
+    $scope.location = location;
+  });
+
+  $scope.save = function() {
+    $resource(url, null, { 'update': { method:'PUT' } }).update($scope.location, function() {
+      $location.url("/admin/location");
+    });
+  }
 });

@@ -10,7 +10,7 @@ section.container.pages
     .panel-body
       .row
         .photo.col-md-3
-          img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
+          img.img-responsive(src="images/location/{{ location.code }}_1.jpg")
         .col-md-9
           .title
             h2 {{ location.name }}, {{ location. country }}
@@ -19,4 +19,4 @@ section.container.pages
           .itineraries Roteiros:
             ul
               li(ng-repeat="itinerary in location.itineraries")
-                a(href="itinerary/{{ itinerary._id }}") {{ itinerary.name }}
+                a(href="itinerary/{{ itinerary.code }}") {{ itinerary.name }}
