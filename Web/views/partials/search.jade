@@ -1,24 +1,27 @@
-ol.breadcrumb
-  li
-    a(href="/") Home
-  li.active Pesquisa
+include menu.jade
 
-form(ng-submit="executeSearch()")
-  .input-group
-    input.form-control(type="text", ng-model="search.text", placeholder="Pesquisar")
-    span.input-group-btn
-      button.btn.btn-default(type="submit")
-        span.glyphicon.glyphicon-search
+section.container.pages
+  ol.breadcrumb
+    li
+      a(href="/") Home
+    li.active Pesquisa
 
-ul#locations
-  li(ng-repeat="location in locations")
-    .panel.panel-default
-      .panel-body
-        .row
-          .photo.col-md-2
-            img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
-          .col-md-10
-            .title
-              h2
-                a(href="location/{{ location._id }}") {{ location.name }}, {{ location. country }}
-            .description {{ location.description.substring(0, 400) }}...
+  form(ng-submit="executeSearch()")
+    .input-group
+      input.form-control(type="text", ng-model="search.text", placeholder="Pesquisar")
+      span.input-group-btn
+        button.btn.btn-default(type="submit")
+          span.glyphicon.glyphicon-search
+
+  ul#locations
+    li(ng-repeat="location in locations")
+      .panel.panel-default
+        .panel-body
+          .row
+            .photo.col-md-2
+              img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
+            .col-md-10
+              .title
+                h2
+                  a(href="location/{{ location._id }}") {{ location.name }}, {{ location. country }}
+              .description {{ location.description.substring(0, 400) }}...

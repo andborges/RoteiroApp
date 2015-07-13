@@ -1,6 +1,145 @@
-form(ng-submit="executeSearch()")
-  .input-group
-    input.form-control(type="text", ng-model="search.text", placeholder="Pesquisar")
-    span.input-group-btn
-      button.btn.btn-default(type="submit")
-        span.glyphicon.glyphicon-search
+.navbar-wrapper
+  nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+    div.container
+      div.navbar-header.page-scroll
+        button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href="/") Roteiro
+
+      div#navbar.navbar-collapse.collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a.page-scroll(href="#page-top") Home
+          li
+            a.page-scroll(href="#how") Como funciona
+          li
+            a.page-scroll(href="#testimonials") Depoimentos
+          li
+            a.page-scroll(href="#contact") Contato
+
+div#inSlider.carousel.slide.carousel-fade(data-ride="carousel")
+  .carousel-inner(role="listbox")
+    .item.active
+      .container
+        .carousel-caption
+          .row
+            .col-md-6
+              h2 Para onde você vai viajar?
+              form(ng-submit="executeSearch()")
+                  .input-group.input-group-lg
+                    input.form-control(type="text", ng-model="search.text", placeholder="Pesquisar")
+                    span.input-group-btn
+                      button.btn.btn-default(type="submit")
+                        span.glyphicon.glyphicon-search
+
+      .header-back.one
+
+section#how.container
+  .row
+    .col-lg-12.text-center
+      .navy-line
+      h1
+        b Simplifica o planejamento da sua viagem
+        br
+        span.navy muito fácil de usar
+  .row
+    .col-md-4.text-center.wow.fadeInLeft
+      i.fa.fa-search.features-icon
+      h2 Encontre o roteiro
+      p Pesquise facilmente e escolha entre diversos roteiros cuidadosamente preparados.
+    .col-md-4.text-center.wow.zoomIn
+      i.fa.fa-heart.features-icon
+      h2 Salve como favorito
+      p Faça o login com sua conta do Facebook e salve o roteiro para acessá-lo facilmente depois.
+    .col-md-4.text-center.wow.fadeInRight
+      i.fa.fa-mobile.features-icon
+      h2 Acesse pelo smartphone
+      p Baixe o aplicativo e acesse o roteiro pelo seu smartphone durante a sua viagem.
+
+section#testimonials.navy-section.testimonials
+  .container
+    .row
+      .col-lg-12.text-center.wow.zoomIn
+        i.fa.fa-comment.big-icon
+        h1 O que nossos usuários estão dizendo
+        .testimonials-text
+          i "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+        small
+          strong 12.02.2014 - Andy Smith
+
+section#contact.gray-section.contact
+  .container
+    .row.m-b-lg
+      .col-lg-12.text-center
+        .navy-line
+        h1 Entre em contato
+        p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.
+    .row
+      .col-lg-12.text-center
+        a.btn.btn-primary(href="mailto:test@email.com") Envie um email
+        p.m-t-sm Ou siga-nos nas redes sociais
+        ul.list-inline.social-icon
+          li
+            a(href="#")
+              i.fa.fa-twitter
+          li
+            a(href="#")
+              i.fa.fa-facebook
+          li
+            a(href="#")
+              i.fa.fa-linkedin
+    .row
+      .col-lg-8.col-lg-offset-2.text-center.m-t-lg.m-b-lg
+        p
+          strong &copy; 2015 Roteiro
+          br
+          span consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde
+
+script(src='/libs/classie.js')
+script(src='/libs/cbpAnimatedHeader.js')
+script(src='/libs/wow.min.js')
+
+script.
+  $(document).ready(function () {
+      // Highlight the top nav as scrolling
+      $('body').scrollspy({
+          target: '.navbar-fixed-top',
+          offset: 80
+      })
+
+      // Page scrolling feature
+      $('a.page-scroll').bind('click', function(event) {
+          var link = $(this);
+          $('html, body').stop().animate({
+              scrollTop: $(link.attr('href')).offset().top - 70
+          }, 500);
+          event.preventDefault();
+      });
+
+      var headers = ['one', 'two', 'three'];
+      var headerPosition = 0;
+
+      var changeHeader = function() {
+        $(".header-back").fadeTo('slow', 0, function()
+        {
+            $(".header-back").removeClass(headers[headerPosition]);
+
+            headerPosition = headerPosition + 1;
+
+            if (headerPosition > headers.length - 1) {
+              headerPosition = 0;
+            }
+
+            $(this).addClass(headers[headerPosition]);
+        }).fadeTo('slow', 1);
+      };
+
+      setInterval(function() {
+        changeHeader();
+      }, 10000);
+  });
+
+  new WOW().init();

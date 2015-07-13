@@ -1,6 +1,5 @@
-body {
-  padding-top: 70px;
-  padding-bottom: 30px;
+section.container.pages {
+  margin-top: 72px;
 }
 
 ul#locations {

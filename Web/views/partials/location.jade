@@ -1,19 +1,22 @@
-ol.breadcrumb
-  li
-    a(href="/") Home
-  li.active {{ location.name }}
+include menu.jade
 
-.panel.panel-default
-  .panel-body
-    .row
-      .photo.col-md-3
-        img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
-      .col-md-9
-        .title
-          h2 {{ location.name }}, {{ location. country }}
-        .description {{ location.description }}
+section.container.pages
+  ol.breadcrumb
+    li
+      a(href="/") Home
+    li.active {{ location.name }}
 
-        .itineraries Roteiros:
-          ul
-            li(ng-repeat="itinerary in location.itineraries")
-              a(href="itinerary/{{ itinerary._id }}") {{ itinerary.name }}
+  .panel.panel-default
+    .panel-body
+      .row
+        .photo.col-md-3
+          img.img-responsive(src="images/location/{{ location._id }}_1.jpg")
+        .col-md-9
+          .title
+            h2 {{ location.name }}, {{ location. country }}
+          .description {{ location.description }}
+
+          .itineraries Roteiros:
+            ul
+              li(ng-repeat="itinerary in location.itineraries")
+                a(href="itinerary/{{ itinerary._id }}") {{ itinerary.name }}
