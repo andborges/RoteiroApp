@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 var app = express();
 
@@ -27,6 +29,13 @@ mongoose.connect('mongodb://@127.0.0.1:27017/roteiro', function(err) {
         console.log('connection successful');
     }
 });
+
+app.use(session({
+    secret: "RaostdefigrhoJ",
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    resave: false,
+    saveUninitialized: false
+}));
 
 var routesV1 = require('./routes/api/v1/index');
 app.use('/api/v1', routesV1);
