@@ -22,6 +22,22 @@ controller.list = function(req, res, next) {
   });
 };
 
+controller.create = function(req, res, next) {
+  var place = new models.Place();
+
+  place.location_id = req.body.location_id;
+  place.name = req.body.name;
+  place.description = req.body.description;
+  place.price = req.body.price;
+  place.duration = req.body.duration;
+
+  place.save(function(err) {
+    if (err) return next(err);
+    res.json({ message: 'Place created' });
+  });
+};
+
 module.exports = function(router) {
   router.route('/location/:location_id/place').get(controller.list);
+  router.route('/location/:location_id/place/create').post(controller.create);
 }

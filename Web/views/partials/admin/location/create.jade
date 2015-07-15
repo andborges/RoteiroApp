@@ -35,7 +35,7 @@ section.container.pages
 
     div.form-group(ng-class="{ 'has-error': locationForm.description.$dirty && locationForm.description.$invalid }")
       label(for="name") Descrição
-      textarea.form-control(name="description", rows="10", placeholder="Description", ng-model="location.description", required)
+      textarea.form-control(name="description", rows="10", placeholder="Descrição", ng-model="location.description", required)
 
       div(ng-show="locationForm.$submitted || locationForm.description.$touched")
         span(ng-show="locationForm.description.$error.required") A descrição é obrigatória

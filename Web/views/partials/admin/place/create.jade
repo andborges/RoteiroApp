@@ -1,0 +1,39 @@
+include ../../menu.jade
+
+section.container.pages
+  ol.breadcrumb
+    li
+      a(href="/") Home
+    li
+      a(href="/admin") Admin
+    li
+      a(href="/admin/location") Localidades
+    li {{ location.name }}
+    li
+      a(href="/admin/location/{{ location._id}}/place") Passeios
+    li.active Cadastrar novo
+
+  form(name="placeForm", ng-submit="save()")
+    div.form-group(ng-class="{ 'has-error': placeForm.name.$dirty && placeForm.name.$invalid }")
+      label(for="name") Nome
+      input.form-control(type="text", name="name", placeholder="Nome", ng-model="place.name", required)
+
+      div(ng-show="placeForm.$submitted || placeForm.name.$touched")
+        span(ng-show="placeForm.name.$error.required") O nome é obrigatório
+
+    div.form-group(ng-class="{ 'has-error': placeForm.description.$dirty && placeForm.description.$invalid }")
+      label(for="name") Descrição
+      textarea.form-control(name="description", rows="10", placeholder="Descrição", ng-model="place.description", required)
+
+      div(ng-show="placeForm.$submitted || placeForm.description.$touched")
+        span(ng-show="placeForm.description.$error.required") A descrição é obrigatória
+
+    div.form-group(ng-class="{ 'has-error': placeForm.price.$dirty && placeForm.price.$invalid }")
+      label(for="name") Preço
+      input.form-control(type="text", name="price", placeholder="45,00", ng-model="place.price")
+
+    div.form-group(ng-class="{ 'has-error': placeForm.duration.$dirty && placeForm.duration.$invalid }")
+      label(for="name") Duração (em minutos)
+      input.form-control(type="text", name="duration", placeholder="90", ng-model="place.duration")
+
+    button.btn.btn-default(type="submit", ng-disabled="placeForm.$invalid") Salvar

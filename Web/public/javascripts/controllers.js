@@ -10,9 +10,7 @@ angular.module('roteiroApp.controllers', [])
 .controller('SearchCtrl', function($scope, $location, $routeParams, $resource) {
   $scope.search = { text: $routeParams.text };
 
-  var url = "/api/v1/location/search/" + $scope.search.text;
-
-  $resource(url).query(function(locations) {
+  $resource("/api/v1/location/search/" + $scope.search.text).query(function(locations) {
     $scope.locations = locations;
   });
 
@@ -21,16 +19,12 @@ angular.module('roteiroApp.controllers', [])
   }
 })
 .controller('LocationCtrl', function($scope, $routeParams, $resource) {
-  var url = "/api/v1/location/code/" + $routeParams.code;
-
-  $resource(url).get(function(location) {
+  $resource("/api/v1/location/code/" + $routeParams.code).get(function(location) {
     $scope.location = location;
   });
 })
 .controller('ItineraryCtrl', function($scope, $routeParams, $resource) {
-  var url = "/api/v1/itinerary/code/" + $routeParams.code;
-
-  $resource(url).get(function(location) {
+  $resource("/api/v1/itinerary/code/" + $routeParams.code).get(function(location) {
     $scope.location = location;
 
     $scope.map = {
@@ -90,28 +84,33 @@ angular.module('roteiroApp.controllers', [])
   }
 })
 .controller('AdminLocationEditCtrl', function($scope, $location, $routeParams, $resource) {
-  var url = "/api/v1/location/" + $routeParams.id;
-
-  $resource(url).get(function(location) {
+  $resource("/api/v1/location/" + $routeParams.id).get(function(location) {
     $scope.location = location;
   });
 
   $scope.save = function() {
-    $resource(url, null, { 'update': { method:'PUT' } }).update($scope.location, function() {
+    $resource("/api/v1/location/" + $routeParams.id, null, { 'update': { method:'PUT' } }).update($scope.location, function() {
       $location.url("/admin/location");
     });
   }
 })
 
 .controller('AdminPlaceListCtrl', function($scope, $routeParams, $resource) {
-  var url = "/api/v1/location/" +  $routeParams.location_id + "/place";
-
-  $resource(url).get(function(location) {
+  $resource("/api/v1/location/" + $routeParams.location_id + "/place").get(function(location) {
     $scope.location = location;
   });
 })
-.controller('AdminPlaceCreateCtrl', function($scope, $location, $resource) {
+.controller('AdminPlaceCreateCtrl', function($scope, $routeParams, $location, $resource) {
+  $resource("/api/v1/location/" + $routeParams.location_id).get(function(location) {
+    $scope.location = location;
+  });
+
   $scope.save = function() {
+    $scope.place.location_id = $routeParams.location_id;
+
+    $resource("/api/v1/location/" + $routeParams.location_id + "/place/create").save($scope.place, function() {
+      $location.url("/admin/location/" + $routeParams.location_id + "/place");
+    });
   }
 })
 .controller('AdminPlaceEditCtrl', function($scope, $location, $routeParams, $resource) {
