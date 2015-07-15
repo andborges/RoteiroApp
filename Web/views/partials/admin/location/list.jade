@@ -23,4 +23,7 @@ section.container.pages
         td {{ location.name }}
         td {{ location.country }}
         td
-          a(href="/admin/location/edit/{{ location._id }}") Alterar
+          div
+            a(href="/admin/location/{{ location._id }}/edit") Alterar
+          div
+            a(href="/admin/location/{{ location._id }}/place") Listar passeios

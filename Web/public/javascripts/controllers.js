@@ -78,17 +78,13 @@ angular.module('roteiroApp.controllers', [])
 })
 
 .controller('AdminLocationListCtrl', function($scope, $routeParams, $resource) {
-  var url = "/api/v1/location";
-
-  $resource(url).query(function(locations) {
+  $resource("/api/v1/location").query(function(locations) {
     $scope.locations = locations;
   });
 })
 .controller('AdminLocationCreateCtrl', function($scope, $location, $resource) {
   $scope.save = function() {
-    var url = "/api/v1/location";
-
-    $resource(url).save($scope.location, function() {
+    $resource("/api/v1/location").save($scope.location, function() {
       $location.url("/admin/location");
     });
   }
@@ -104,5 +100,21 @@ angular.module('roteiroApp.controllers', [])
     $resource(url, null, { 'update': { method:'PUT' } }).update($scope.location, function() {
       $location.url("/admin/location");
     });
+  }
+})
+
+.controller('AdminPlaceListCtrl', function($scope, $routeParams, $resource) {
+  var url = "/api/v1/location/" +  $routeParams.location_id + "/place";
+
+  $resource(url).get(function(location) {
+    $scope.location = location;
+  });
+})
+.controller('AdminPlaceCreateCtrl', function($scope, $location, $resource) {
+  $scope.save = function() {
+  }
+})
+.controller('AdminPlaceEditCtrl', function($scope, $location, $routeParams, $resource) {
+  $scope.save = function() {
   }
 });
