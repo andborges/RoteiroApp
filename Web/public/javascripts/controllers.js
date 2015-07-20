@@ -104,6 +104,20 @@ angular.module('roteiroApp.controllers', [])
   $resource("/api/v1/location/" + $routeParams.location_id).get(function(location) {
     $scope.location = location;
   });
+  
+  $scope.map = { center: { latitude: 40.1451, longitude: -99.6680 }, zoom: 16 };
+  $scope.options = { scrollwheel: false };
+
+  $scope.searchbox = {
+    template:'searchbox.tpl.html',
+    events: {
+      places_changed: function (searchBox) {
+        // console.log(searchBox.getPlaces()[0].geometry.location.lat());
+        var latLng = searchBox.getPlaces()[0].geometry.location;
+        $scope.map.center = { latitude: latLng.lat(), longitude: latLng.lng() };
+      }
+    }
+  };
 
   $scope.save = function() {
     $scope.place.location_id = $routeParams.location_id;

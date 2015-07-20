@@ -13,6 +13,12 @@ section.container.pages
       a(href="/admin/location/{{ location._id}}/place") Passeios
     li.active Cadastrar novo
 
+  script(type="text/ng-template", id="searchbox.tpl.html")
+    input(type="text", placeholder="Search Box")
+
+  ui-gmap-google-map(center="map.center", zoom="map.zoom", draggable="true", options="options")
+    ui-gmap-search-box(template="searchbox.template", events="searchbox.events")
+
   form(name="placeForm", ng-submit="save()")
     div.form-group(ng-class="{ 'has-error': placeForm.name.$dirty && placeForm.name.$invalid }")
       label(for="name") Nome
